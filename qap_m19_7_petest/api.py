@@ -72,7 +72,7 @@ class PetFriends:
     def delete_pet(self, auth_key: json, pet_id):
         headers = {'auth_key': auth_key['key']}
         
-        res = requests.delete(self.base_url + 'api/pets' + pet_id, headers=headers)
+        res = requests.delete(self.base_url + 'api/pets/' + pet_id, headers=headers)
         status = res.status_code
         result = ""
         try:
@@ -89,7 +89,7 @@ class PetFriends:
                 'age': age
         }
 
-        res = requests.put(self.base_url + 'api/pets' + pet_id, headers=headers, data=data)
+        res = requests.put(self.base_url + 'api/pets/' + pet_id, headers=headers, data=data)
         status = res.status_code
         result = ""
         try:
