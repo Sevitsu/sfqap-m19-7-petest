@@ -66,7 +66,8 @@ def test_add_new_pet_photo(pet_photo='images/Kotya.jpeg'):
     _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
     
     if len(my_pets['pets']) > 0:
-        status, result = pf.add_pet_photo(auth_key, my_pets['pets'][2]['id'], pet_photo)
+        pet_id = my_pets['pets'][1]['id']
+        status, result = pf.add_pet_photo(auth_key, pet_id, pet_photo)
 
     assert status == 200
     assert result['pet_photo'] == pet_photo
