@@ -26,6 +26,9 @@ def test_add_new_pet_simple(name='Kotya', animal_type='Catt', age='1'):
 def test_add_new_pet_with_valid_data(name='Kotya', animal_type='Catt', age='1', pet_photo='images/Kotya.jpeg'):
     pet_photo = os.path.join(os.path.dirname(__file__), pet_photo)
     _, auth_key = pf.get_api_key(valid_email, valid_password)
+    print(pet_photo)
+    print(auth_key)
+    breakpoint
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
     assert status == 200
     assert result['name'] == name
@@ -33,7 +36,6 @@ def test_add_new_pet_with_valid_data(name='Kotya', animal_type='Catt', age='1', 
 def test_successful_delete_self_pet():
     _, auth_key = pf.get_api_key(valid_email, valid_password)
     _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
-
     if len(my_pets['pets']) == 0:
         pf.add_new_pet(auth_key, "Supets", "mmm", "2", "images/kotya.jpeg")
         _, my_pets = pf.get_list_of_pets(auth_key, "my_pets")
@@ -71,13 +73,13 @@ def test_add_new_pet_photo(pet_photo='images/Kotya.jpeg'):
 
 #Negative tests below
 
-def test_get_all_pets_with_invalid_key(filter=''):
-    _, auth_key = pf.get_api_key('invalid@invalid.ru', 'invalidpass')
-    status, result = pf.get_list_of_pets(auth_key, filter)
-    assert status == 200
-    assert len(result['pets']) > 0
+#def test_get_all_pets_with_invalid_key(filter=''):
+#    _, auth_key = pf.get_api_key('invalid@invalid.ru', 'invalidpass')
+#    status, result = pf.get_list_of_pets(auth_key, filter)
+#    assert status == 200
+#    assert len(result['pets']) > 0
 
-def test_get_api_key_for_invalid_user(email=valid_email, password=valid_password):
-    status, result = pf.get_api_key('invalid@invalid.ru', 'invalidpass')
-    assert status == 200
-    assert 'key' in result
+#def test_get_api_key_for_invalid_user(email=valid_email, password=valid_password):
+#    status, result = pf.get_api_key('invalid@invalid.ru', 'invalidpass')
+#    assert status == 200
+#    assert 'key' in result

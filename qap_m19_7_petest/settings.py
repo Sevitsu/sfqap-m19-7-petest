@@ -1,3 +1,3 @@
 
-valid_email = "ratert@mail.ru"
-valid_password = "123"
+valid_email = "qwer@mmm.ru"
+valid_password = "567"

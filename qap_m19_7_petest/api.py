@@ -1,11 +1,11 @@
 import requests
 import json
-import requests_toolbelt
 from requests_toolbelt.multipart.encoder import MultipartEncoder
+
 
 class PetFriends:
     def __init__(self):
-        self.base_url = "https://petfriends1.herokuapp.com/"
+        self.base_url = "https://petfriends.skillfactory.ru/"
 
     def get_api_key(self, email, password):
         headers = {
@@ -59,7 +59,6 @@ class PetFriends:
                 'pet_photo': (pet_photo, open(pet_photo, 'rb'), 'image/jpeg')
             })
         headers = {'auth_key': auth_key['key'], 'Content_Type': data.content_type}
-        
         res = requests.post(self.base_url + 'api/pets', headers=headers, data=data)
         status = res.status_code
         result = ""
@@ -72,7 +71,7 @@ class PetFriends:
     
     def delete_pet(self, auth_key: json, pet_id):
         headers = {'auth_key': auth_key['key']}
-
+        
         res = requests.delete(self.base_url + 'api/pets' + pet_id, headers=headers)
         status = res.status_code
         result = ""
