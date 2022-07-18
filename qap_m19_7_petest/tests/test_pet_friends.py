@@ -26,9 +26,7 @@ def test_add_new_pet_simple(name='Kotya', animal_type='Catt', age='1'):
 def test_add_new_pet_with_valid_data(name='Kotya', animal_type='Catt', age='1', pet_photo='images/Kotya.jpeg'):
     pet_photo = os.path.join(os.path.dirname(__file__), pet_photo)
     _, auth_key = pf.get_api_key(valid_email, valid_password)
-    print(pet_photo)
-    print(auth_key)
-    breakpoint
+    
     status, result = pf.add_new_pet(auth_key, name, animal_type, age, pet_photo)
     assert status == 200
     assert result['name'] == name
