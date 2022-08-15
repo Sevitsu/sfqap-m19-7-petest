@@ -67,8 +67,8 @@ def test_add_new_pet_photo(pet_photo='images/Kotya.jpeg'):
         pet_id = my_pets['pets'][0]['id']
         status, result = pf.add_pet_photo(auth_key, pet_id, pet_photo)
 
-    assert status == 200
-    assert 'pet_photo' in result
+        assert status == 200
+        assert 'pet_photo' in result
 
 #Negative tests below
 
